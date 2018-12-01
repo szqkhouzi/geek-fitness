@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>{{ title }} | 程序员爱健身</title>
+{% endblock title %}
+
+{% block script %}
+    <script src="/static/js/details.js"></script>
+{% endblock script %}
+
+{% block article %}
+    {{ content_html }}
+{% endblock article %}
+
+{% block page %}
+{% endblock page%}
