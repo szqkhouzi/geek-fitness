@@ -1,6 +1,6 @@
 import mongoengine
 
-class fitness(mongoengine.Document):
+class LoveFitness(mongoengine.Document):
     _id = mongoengine.StringField()
     b_cate = mongoengine.StringField()
     s_href = mongoengine.StringField()
@@ -8,6 +8,7 @@ class fitness(mongoengine.Document):
     title = mongoengine.StringField()
     img = mongoengine.StringField()
     date = mongoengine.StringField()
+    datetime = mongoengine.StringField()
     category = mongoengine.StringField()
     href = mongoengine.StringField()
     author = mongoengine.StringField()
@@ -25,6 +26,7 @@ class fitness(mongoengine.Document):
             'title': self.title,
             'img': self.img,
             'date': self.date,
+            'datetime': self.datetime,
             'catrgory': self.catrgory,
             'href': self.href,
             'author': self.author,
@@ -37,6 +39,6 @@ class fitness(mongoengine.Document):
 
     class Meta:
         managed = False
-        db_table = 'fitness'
+        db_table = 'LoveFitness'
 
-    meta = {'collection':'fitness'}
+    meta = {'collection':'LoveFitness'}

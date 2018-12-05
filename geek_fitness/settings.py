@@ -27,7 +27,7 @@ SECRET_KEY = '(1ekxv74zox6axl&!7nna-=x460i5be64=rttdf&*-(l9y=ir#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'index',
-    'details',
+    'index',  # 首页模块
+    'details',  # 详情页模块
+    'category',  # 分类模块
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
