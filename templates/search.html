@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>{{ text }} | 程序员爱健身</title>
+{% endblock title %}
+
+{% block article %}
+    <div class="posts-loop">
+        {% for type in contacts %}
+        <article id="post" class="list-post post type-post status-publish format-standard has-post-thumbnail hentry category-30days tag-1988 tag-313">
+            <figure class="entry-thumbnail">
+                <a href="/details/detail?date={{ type.date }}&title={{ type.title }}" title="{{ type.title }}">
+                    <img width="360" height="360" src="{{ type.img }}" class="attachment-medium size-medium wp-post-image" alt="" srcset="{{ type.img }} 360w,{{ type.img }} 150w" sizes="(max-width: 360px) 100vw, 360px" />
+                    <span class="format-icon"></span>
+                </a>
+            </figure>
+            <header class="entry-header">
+                <div class="entry-meta">
+                    <span class="posted-on">
+                        <span class="screen-reader-text">Posted on</span>
+                        <a rel="bookmark">
+                            <time class="entry-date published updated" datetime="{{ type.date }}">{{ type.date }}</time>
+                        </a>
+                    </span>
+                    {% for cate in type.category %}
+                    <span class="category">
+                        <a rel="category tag">{{ cate }}</a>
+                    </span>
+                    {% endfor %}
+                </div>
+                <h2 class="entry-title">
+                    <a href="/details/detail?date={{ type.date }}&title={{ type.title }}" rel="bookmark">{{ type.title }}</a>
+                </h2>
+            </header><!-- .entry-header -->
+            <div class="entry-summary">
+                <p>
+        							{{ type.content | first }}
+                    <a class="more-link" href="/details/detail?date={{ type.date }}&title={{ type.title }}" title="{{ type.title }}">Read more					</a>
+                </p>
+            </div>
+        </article>
+        {% endfor %}
+
+    </div>
+{% endblock article %}
+
+{% block page %}
+    <nav class="navigation pagination" role="navigation">
+        <div class="nav-links">
+            {% if pageBlogs.has_previous %}
+                <a class="prev page-numbers" href="?s={{ text }}&page={{ contacts.previous_page_number }}">←</a>
+            {% endif %}
+            {% for pindex in page_range %}
+                {% if pindex == pageBlogs.number %}
+                    <span aria-current="page" class="page-numbers current">{{ pindex }}</span>
+                {% else %}
+                    {% if pindex == '...' %}
+                        <span class="page-numbers dots">{{ pindex }}</span>
+                    {% else %}
+                        <a class='page-numbers' href='?s={{ text }}&page={{ pindex }}'>{{ pindex }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if pageBlogs.has_next %}
+                <a class="next page-numbers" href="?s={{ text }}&page={{ contacts.next_page_number }}">&rarr;</a>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock page %}
